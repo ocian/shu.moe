@@ -1,0 +1,7 @@
+node_modules/
+.history/
+.vscode/
+dist/
+
+# 环境变量
+.env

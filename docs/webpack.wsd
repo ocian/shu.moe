@@ -1,0 +1,55 @@
+@startwbs webpack
+
+' * frontend
+* webpack v5
+** entry\n文件入口
+*** 单文件入口\n{ entry: './src/index.js' }
+*** 入口文件需要前置依赖\n{ entry: ['whatwg-fetch', './src/index.js'] }
+*** 拆分依赖到单独的文件中\n{entry: {\n  app: { import: './src/index.tsx', dependOn: 'vendor' },\n  vendor: ['react/jsx-runtime', 'react-dom', 'react-router-dom']\n}},
+** output\n文件输出
+*** 完成构建后清空之前的文件\n{ output: { clean: true } }
+*** 根据内容生成 hash\n{ output: { filename: '[name].[contenthash:7].js' } }
+** devServer\n开发工具
+*** 前端路由\n{ devServer: { historyApiFallback: true } }
+** loader\n按类型处理文件
+*** swc-loader\n非常快的 ts、js 构建工具\n{ module: { rules: [{\n  test: /\.tsx?/,\n  use: {\n    loader: 'swc-loader',\n    options: {\n      sync: true,\n      jsc: {\n        parser: { syntax: 'typescript', tsx: true, dynamicImport: true, },\n        transform: { react: { runtime: 'automatic' } }\n      }\n    }\n  }\n},\n] } }
+*** 样式处理\nconst MiniCssExtractPlugin = require('mini-css-extract-plugin');\n{ module: rules: [{\n        test: /\.css$/,\n        use: ['style-loader','css-loader',],\n      },\n      {\n        test: /\.s(c|a)ss$/,\n        use: [MiniCssExtractPlugin.loader,'css-loader','sass-loader',],\n      }] }
+**** style-loader\n支持 fast refresh
+**** mini-css-extract-plugin\n分离 CSS 代码到单独文件，需要配合 plugin
+** plugin\n在整个构建过程参与
+*** 使用 html-webpack-plugin 定制 html 模板\nconst HTMLWebpackPlugin = require('html-webpack-plugin')\n{ plugins: [new HTMLWebpackPlugin({ template: './src/assets/index.html' })] }
+*** 使用 mini-css-extract-plugin 分离 CSS 代码，需要配合 loader\nplugins: [ new MiniCssExtractPlugin() ]
+' ** optimization\n对最终代码压缩混淆、拆分过程的控制
+' *** 使用 esbuild 替换默认的压缩混淆工具\nconst { ESBuildMinifyPlugin } = require('esbuild-loader')\n{ optimization: { minimizer: [new ESBuildMinifyPlugin({ target: 'exnext' })] } }
+** devtool\n配置 source map
+*** source-map\n生产环境推荐设置，build 最慢，rebuild 最慢，original 级质量
+*** eval-source-map\n开发环境推荐设置，build 最慢，rebuild OK，original 级质量
+*** nosources-source-map\n不包含 source code
+*** hidden-nosources-source-map\n不包含 source code 和指向
+** stats\n控制台输出信息范围
+*** normal\n标准输出，默认选项
+*** minimal\n只在发生错误或者编译开始时输出，很清爽
+** resolve\n解析选项
+*** modules 模块解析目录，可以把特定目录当成 node_modules 来用\n{ resolve: { modules: ['node_modules', 'src'] } }
+*** extensions 引用文件可以省略后缀名，会按照列表顺序尝试读取\n{ resolve: { extensions: ['.tsx', '.jsx', '.ts', '.js'] } }
+
+@endwbs
+
+@startwbs react
+
+* react
+** 路由\nreact-router-dom
+** 代码拆分\n@loadable/component
+** 全局状态树\nReact Context API
+** 发送请求\nfetch
+** 多语言\n<sup>todo</sup>反正会有的
+** 样式库
+** 特别情况处理
+*** 超大量数据加载
+*** 表单
+*** 拖拽
+*** 图表
+*** 图片懒加载
+** 组件拆分逻辑
+
+@endwbs
