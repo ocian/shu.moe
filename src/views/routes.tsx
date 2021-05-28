@@ -17,14 +17,9 @@ const routes: RouteProps[] = [
     name: 'home',
   },
   {
-    path: '/page1',
-    component: loadable(() => import('./page1')),
-    name: 'page1',
-  },
-  {
-    path: '/page2',
-    component: loadable(() => import('./page2')),
-    name: 'page2',
+    path: '/blog',
+    component: loadable(() => import('./blog')),
+    name: 'blog',
   },
 ]
 
