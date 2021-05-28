@@ -1,2 +1,0 @@
-(self.webpackChunkreact_a123=self.webpackChunkreact_a123||[]).push([[996],{996:(e,a,r)=>{"use strict";r.r(a),r.d(a,{default:()=>t});var c=r(637);function t(){return(0,c.jsx)("div",{children:"home"})}}}]);
-//# sourceMappingURL=996.23bb5e8.js.map

@@ -1,6 +1,7 @@
 import loadable, { LoadableComponent } from '@loadable/component'
 import { BrowserRouter, HashRouter, Route, Switch } from 'react-router-dom'
 import LinkList from '../components/link_list'
+import { Store } from '../store'
 
 interface RouteProps {
   exact?: boolean
@@ -13,13 +14,24 @@ const routes: RouteProps[] = [
   {
     exact: true,
     path: '/',
-    component: loadable(() => import('./home')),
+    component: loadable(
+      () => import(/* webpackChunkName: "page-home" */ './home')
+    ),
     name: 'home',
   },
   {
     path: '/blog',
-    component: loadable(() => import('./blog')),
+    component: loadable(
+      () => import(/* webpackChunkName: "page-blog" */ './blog')
+    ),
     name: 'blog',
+  },
+  {
+    path: '/post',
+    name: 'post',
+    component: loadable(
+      () => import(/* webpackChunkName: "page-post" */ './post')
+    ),
   },
 ]
 
@@ -29,12 +41,14 @@ const RenderRoute = (props: RouteProps) => (
 
 const Routes = () => (
   <HashRouter>
-    <LinkList list={routes} />
-    <Switch>
-      {routes.map((route) => (
-        <RenderRoute {...route} key={route.path} />
-      ))}
-    </Switch>
+    <Store>
+      <LinkList list={routes} />
+      <Switch>
+        {routes.map((route) => (
+          <RenderRoute {...route} key={route.path} />
+        ))}
+      </Switch>
+    </Store>
   </HashRouter>
 )
 

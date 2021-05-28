@@ -1,0 +1,2 @@
+(self.webpackChunkreact_a123=self.webpackChunkreact_a123||[]).push([[628],{996:(e,r,a)=>{"use strict";a.r(r),a.d(r,{default:()=>n});var c=a(637);function n(){return(0,c.jsx)("div",{children:(0,c.jsx)("p",{children:"这里应该是有一些内容的，比如说我是前端啦，我很弱啦，但是完全想不出怎么写比较好，不如空着"})})}}}]);
+//# sourceMappingURL=page-home.8195d97.js.map

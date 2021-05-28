@@ -1,2 +1,0 @@
-(self.webpackChunkreact_a123=self.webpackChunkreact_a123||[]).push([[704],{704:(e,a,r)=>{"use strict";r.r(a),r.d(a,{default:()=>t});var c=r(637);function t(){return(0,c.jsx)("div",{children:"blog"})}}}]);
-//# sourceMappingURL=704.cdb4cd1.js.map
