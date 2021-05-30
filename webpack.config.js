@@ -35,7 +35,7 @@ module.exports = {
   },
   plugins: [
     new HTMLWebpackPlugin({ template: './src/assets/index.html' }),
-    new CopyPlugin({ patterns: ['./src/public/CNAME'] }),
+    new CopyPlugin({ patterns: [{from: 'src/public', to: '.'}] }),
   ].concat(mode === 'production' ? [new MiniCssExtractPlugin()] : []),
   module: {
     rules: [
