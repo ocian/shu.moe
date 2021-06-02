@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react'
-import pageList from '../../content/index'
-import Context from '../../store'
+import { useState } from 'react'
+import pageList from 'content/index'
 import { Link } from 'react-router-dom'
 
 export default function Blog() {

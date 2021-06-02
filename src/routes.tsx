@@ -1,7 +1,6 @@
 import loadable, { LoadableComponent } from '@loadable/component'
 import { BrowserRouter, HashRouter, Route, Switch } from 'react-router-dom'
-import LinkList from '../components/link_list'
-import { Store } from '../store'
+import LinkList from 'components/link_list'
 
 interface RouteProps {
   exact?: boolean
@@ -15,14 +14,14 @@ const routes: RouteProps[] = [
     exact: true,
     path: '/',
     component: loadable(
-      () => import(/* webpackChunkName: "page-home" */ './home')
+      () => import(/* webpackChunkName: "page-home" */ 'views/home')
     ),
     name: 'home',
   },
   {
     path: '/blog',
     component: loadable(
-      () => import(/* webpackChunkName: "page-blog" */ './blog')
+      () => import(/* webpackChunkName: "page-blog" */ 'views/blog')
     ),
     name: 'blog',
   },
@@ -30,7 +29,7 @@ const routes: RouteProps[] = [
     path: '/post',
     name: 'post',
     component: loadable(
-      () => import(/* webpackChunkName: "page-post" */ './post')
+      () => import(/* webpackChunkName: "page-post" */ 'views/post')
     ),
   },
 ]
@@ -41,15 +40,14 @@ const RenderRoute = (props: RouteProps) => (
 
 const Routes = () => (
   <HashRouter>
-    <Store>
-      <LinkList list={routes} />
-      <Switch>
-        {routes.map((route) => (
-          <RenderRoute {...route} key={route.path} />
-        ))}
-      </Switch>
-    </Store>
+    <LinkList list={routes} />
+    <Switch>
+      {routes.map((route) => (
+        <RenderRoute {...route} key={route.path} />
+      ))}
+    </Switch>
   </HashRouter>
 )
 
 export default Routes
+export { routes }

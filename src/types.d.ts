@@ -13,4 +13,7 @@ declare module '*.module.scss' {
   export = classNames;
 }
 
+declare module '*.css'
+declare module '*.scss'
 declare module '*.md'
+declare module '*.ttf'
