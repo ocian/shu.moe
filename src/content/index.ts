@@ -2,7 +2,7 @@ const pageList = [
   {
     title: 'hello markdown',
     md: () =>
-      import(/* webpackChunkName: "hello-world.md" */ './hello-markdown.md'),
+      import(/* webpackChunkName: "md.hello-world" */ './hello-markdown.md'),
     summary: '展示 Markdown 基础语法的表现形式',
   },
 ]

@@ -2,7 +2,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const RemarkHTML = require('remark-html')
-const RemarkFrontmatter = require('remark-frontmatter')
+// const RemarkFrontmatter = require('remark-frontmatter')
 const CopyPlugin = require('copy-webpack-plugin')
 const path = require('path')
 
@@ -62,13 +62,12 @@ module.exports = {
       },
       {
         test: /\.md$/,
+        type: 'asset/source',
         use: [
-          { loader: 'html-loader' },
           {
             loader: 'remark-loader',
             options: {
-              removeFrontMatter: false,
-              remarkOptions: { plugins: [RemarkHTML, RemarkFrontmatter] },
+              remarkOptions: { plugins: [RemarkHTML] },
             },
           },
         ],
