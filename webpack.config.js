@@ -32,7 +32,6 @@ module.exports = {
   output: {
     filename: '[name].[contenthash:7].js',
     clean: true,
-    path: path.resolve(__dirname, './docs')
   },
   plugins: [
     new HTMLWebpackPlugin({ template: './src/assets/index.html' }),
