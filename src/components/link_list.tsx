@@ -1,19 +1,29 @@
+import { Button, Menu } from '@material-ui/core'
 import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 export default function LinkList(props: {
-  list: { name: string; path: string }[]
+  list: { name: string; path: string; hidden?: boolean }[]
 }) {
+  const history = useHistory()
   useEffect(() => {
     console.log('link-list', props.list)
   }, [])
+
+  function linkTo(path: string) {
+    history.push(path)
+  }
+
   return (
-    <ul>
-      {props.list.map((item) => (
-        <li key={item.name}>
-          <Link to={item.path}>{item.name}</Link>
-        </li>
-      ))}
-    </ul>
+    <>
+      {props.list.map(
+        (item) =>
+          !item.hidden && (
+            <Button color="inherit" key={item.name} onClick={() => linkTo(item.path)}>
+              {item.name}
+            </Button>
+          )
+      )}
+    </>
   )
 }

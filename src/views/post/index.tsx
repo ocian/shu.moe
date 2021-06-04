@@ -1,8 +1,10 @@
-import { Typography } from '@material-ui/core'
+import { Container, Typography } from '@material-ui/core'
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import pageList, { Page } from 'content'
 import { getURLSearch } from 'utils'
+import styles from './index.module.scss'
+import Layout from 'components/layout'
 
 export default function Post() {
   const location = useLocation()
@@ -21,15 +23,19 @@ export default function Post() {
     }
   }, [])
   return (
-    <div>
-      {page && (
-        <>
-          <h1>{page.title}</h1>
-          <Typography>
-            <span dangerouslySetInnerHTML={{ __html: page.html }}></span>
-          </Typography>
-        </>
-      )}
-    </div>
+    <Layout>
+      <Container>
+        {page && (
+          <>
+            <Typography variant="h1" className={styles.title}>
+              {page.title}
+            </Typography>
+            <Typography>
+              <span dangerouslySetInnerHTML={{ __html: page.html }}></span>
+            </Typography>
+          </>
+        )}
+      </Container>
+    </Layout>
   )
 }
