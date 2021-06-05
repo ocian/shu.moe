@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom'
 import Layout from 'components/layout'
 import {
   Button,
+  Container,
   Divider,
   List,
   ListItem,
@@ -22,27 +23,29 @@ export default function PageBlogList() {
 
   return (
     <Layout>
-      <List>
-        {pages.map((page, index) => (
-          <span key={page.title}>
-            <ListItem>
-              <ListItemText
-                primary={
-                  <Typography
-                    variant="h5"
-                    onClick={() => linkTo('/post?slug=' + page.slug)}
-                    className={styles.list_item_title}
-                  >
-                    {page.title}
-                  </Typography>
-                }
-                secondary={page.summary}
-              />
-            </ListItem>
-            <Divider component="li" />
-          </span>
-        ))}
-      </List>
+      <Container>
+        <List>
+          {pages.map((page, index) => (
+            <span key={page.title}>
+              <ListItem>
+                <ListItemText
+                  primary={
+                    <Typography
+                      variant="h5"
+                      onClick={() => linkTo('/post?slug=' + page.slug)}
+                      className={styles.list_item_title}
+                    >
+                      {page.title}
+                    </Typography>
+                  }
+                  secondary={page.summary}
+                />
+              </ListItem>
+              <Divider component="li" />
+            </span>
+          ))}
+        </List>
+      </Container>
     </Layout>
   )
 }
