@@ -12,7 +12,7 @@ import {
 } from '@material-ui/core'
 import styles from './index.module.scss'
 
-export default function Blog() {
+export default function PageBlogList() {
   const history = useHistory()
   const [pages] = useState(() => pageList)
 
@@ -23,34 +23,24 @@ export default function Blog() {
   return (
     <Layout>
       <List>
-        {pages.map((item, index) => (
-          <>
-            {index !== 0 && (
-              <Divider
-                key={index + '_divider'}
-                variant="inset"
-                component="li"
-              />
-            )}
-            <ListItem key={item.title + '_item'}>
+        {pages.map((page, index) => (
+          <span key={page.title}>
+            <ListItem>
               <ListItemText
                 primary={
                   <Typography
                     variant="h5"
-                    onClick={() => linkTo('/post?title=' + item.title)}
+                    onClick={() => linkTo('/post?slug=' + page.slug)}
                     className={styles.list_item_title}
                   >
-                    {item.title}
+                    {page.title}
                   </Typography>
                 }
-                secondary={
-                  <>
-                    <Typography>{item.summary}</Typography>
-                  </>
-                }
+                secondary={page.summary}
               />
             </ListItem>
-          </>
+            <Divider component="li" />
+          </span>
         ))}
       </List>
     </Layout>

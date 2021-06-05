@@ -6,13 +6,13 @@ import { getURLSearch } from 'utils'
 import styles from './index.module.scss'
 import Layout from 'components/layout'
 
-export default function Post() {
+export default function PagePost() {
   const location = useLocation()
   const [page, setPage] = useState<Page & { html: string }>(() => null)
 
   useEffect(() => {
     const search = getURLSearch(location.search)
-    const list = pageList.filter((item) => item.title === search.title)
+    const list = pageList.filter((item) => item.slug === search.slug)
     if (list.length > 0) {
       list[0].md().then((module: any) => {
         setPage({ ...list[0], html: module.default })
@@ -30,10 +30,12 @@ export default function Post() {
             <Typography variant="h3" className={styles.title}>
               {page.title}
             </Typography>
-            <Typography>
-              <p>{page.summary}</p>
-              <span className={styles.content} dangerouslySetInnerHTML={{ __html: page.html }}></span>
-            </Typography>
+
+            <Typography>{page.summary}</Typography>
+            <span
+              className={styles.content}
+              dangerouslySetInnerHTML={{ __html: page.html }}
+            ></span>
           </>
         )}
       </Container>

@@ -1,0 +1,131 @@
+@import 'raleway-webfont/raleway.css';
+
+.wrapper {
+  background-color: #ccc;
+}
+.container {
+  width: 21cm;
+  // height: 29.68cm;
+  // height: 100vh;
+  background-color: #fff;
+  font-family: 'Raleway', sans-serif;
+  padding-bottom: 50px;
+  margin: auto;
+  overflow-y: auto;
+
+  a,
+  a:focus,
+  a:hover,
+  a:visited {
+    text-decoration: none;
+    color: black;
+  }
+  h3 {
+    text-transform: uppercase;
+    padding-top: 0;
+    margin-top: 0;
+    letter-spacing: 5px;
+    font-weight: 400;
+  }
+  .top-row {
+    width: 100%;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    span {
+      width: 100%;
+      display: block;
+      text-align: center;
+      font-weight: normal;
+    }
+    span.person-name {
+      text-transform: uppercase;
+      font-size: 40px;
+      letter-spacing: 10px;
+    }
+    span.person-position {
+      letter-spacing: 5px;
+    }
+  }
+}
+
+.left_col,
+.right_col {
+  box-sizing: content-box;
+}
+.left_col {
+  width: 26%;
+  float: left;
+  padding: 0 4% 0 8%;
+}
+.right_col {
+  width: 50%;
+  float: right;
+  padding: 0 8% 0 4%;
+}
+
+.person_image {
+  display: flex;
+  justify-content: center;
+  height: auto;
+  overflow: hidden;
+  // it will no image when print in browser with no '!important'
+  height: 250px!important;
+  width: 100%!important;
+  background-image: url('assets/imgs/me.jpg')!important;
+  background-position: center!important;
+  background-size: cover!important;
+  -webkit-print-color-adjust: exact !important;
+}
+
+.content {
+  h3 {
+    text-align: center;
+    margin-top: 20px;
+  }
+}
+
+.box {
+  &+.box {
+    margin-top: 50px;
+  }
+  .row {
+    display: flex;
+    align-items: center;
+    p {
+      flex: auto;
+    }
+  }
+  .icon {
+    width: 64px;
+    height: 64px;
+    margin-right: 20px;
+    flex: none;
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .title {
+    border-left: 5px solid rgba(0, 0, 0, 0.9);
+    padding: 0 0 3px 1em;
+    h4,
+    p {
+      margin: 0;
+    }
+    h4 {
+      font-weight: 400;
+    }
+    p {
+      opacity: 0.65;
+    }
+  }
+  .tag_list {
+    span:before {
+      content: '# ';
+      opacity: 0.65;
+    }
+    span + span {
+      margin-left: 10px;
+    }
+  }
+}

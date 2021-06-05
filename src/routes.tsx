@@ -17,14 +17,14 @@ const routes: RouteProps[] = [
     component: loadable(
       () => import(/* webpackChunkName: "page-home" */ 'views/home')
     ),
-    name: 'about',
+    name: '关于',
   },
   {
     path: '/blogs',
     component: loadable(
       () => import(/* webpackChunkName: "page-blog" */ 'views/blog_list')
     ),
-    name: 'blogs',
+    name: '博客',
   },
   {
     path: '/post',
@@ -32,6 +32,12 @@ const routes: RouteProps[] = [
     component: loadable(
       () => import(/* webpackChunkName: "page-post" */ 'views/post')
     ),
+    hidden: true,
+  },
+  {
+    path: '/resume',
+    name: '简历',
+    component: loadable(() => import(/* webpackChunkName: "page-resume" */ 'views/resume')),
     hidden: true,
   },
 ]

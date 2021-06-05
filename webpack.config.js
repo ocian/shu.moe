@@ -1,6 +1,6 @@
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const RemarkHTML = require('remark-html')
 // const RemarkFrontmatter = require('remark-frontmatter')
 const CopyPlugin = require('copy-webpack-plugin')
@@ -19,7 +19,7 @@ module.exports = {
     modules: ['node_modules', 'src'],
     extensions: ['.tsx', '.jsx', '.ts', '.js', '.css', '.scss'],
   },
-  devServer: { historyApiFallback: true },
+  devServer: { historyApiFallback: true, port: process.env.PORT || '8080' },
   entry: {
     app: { import: './src/index.tsx', dependOn: 'vendor' },
     vendor: [
@@ -27,6 +27,7 @@ module.exports = {
       'react-dom',
       'react-router-dom',
       '@loadable/component',
+      'clsx',
     ],
   },
   output: {
@@ -76,24 +77,53 @@ module.exports = {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'fonts/[name].[contenthash:7][ext][query]'
-        }
+          filename: 'fonts/[name].[contenthash:7][ext][query]',
+        },
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'images/[name].[contenthash:7][ext][query]'
-        }
+          filename: 'images/[name].[contenthash:7][ext][query]',
+        },
+        use: [
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              mozjpeg: {
+                progressive: true,
+              },
+              optipng: {
+                enabled: true,
+              },
+              pngquant: {
+                quality: [0.65, 0.9],
+                speed: 4,
+              },
+              gifsicle: {
+                interlaced: false,
+              },
+              // the webp option will enable WEBP
+              webp: {
+                quality: 75,
+              },
+            },
+          },
+        ],
       },
     ],
   },
-  optimization: Object.assign({}, mode === 'production' ? {
-    minimizer: ['...', new CssMinimizerPlugin(),]
-  } : {
-    runtimeChunk: true,
-    removeAvailableModules: false,
-    removeEmptyChunks: false,
-    splitChunks: false,
-  })
+  optimization: Object.assign(
+    {},
+    mode === 'production'
+      ? {
+          minimizer: ['...', new CssMinimizerPlugin()],
+        }
+      : {
+          runtimeChunk: true,
+          removeAvailableModules: false,
+          removeEmptyChunks: false,
+          splitChunks: false,
+        }
+  ),
 }
