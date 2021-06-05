@@ -6,6 +6,7 @@ import {
   useScrollTrigger,
 } from '@material-ui/core'
 import config from 'config'
+import { useHistory } from 'react-router-dom'
 import { routes } from 'routes'
 import LinkList from './link_list'
 
@@ -32,12 +33,22 @@ function HideOnScroll(props: HideOnScrollProps) {
 }
 
 export default function TitleBar(props: TitleBarProps) {
+  const history = useHistory()
+  function linkTo(path: string) {
+    history.push(path)
+  }
   return (
     <>
       <HideOnScroll {...props}>
         <AppBar>
           <Toolbar>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1 }}
+              onClick={() => linkTo(config.links.HOME)}
+              className="cursor"
+            >
               {config.title}
             </Typography>
             <LinkList list={routes} />

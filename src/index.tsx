@@ -4,6 +4,7 @@ import Routes from 'routes'
 import { Store } from 'store'
 import '@fontsource/noto-serif-sc';
 import Initial from 'initial';
+import "./base.scss"
 
 const App = () => (
   <Theme>

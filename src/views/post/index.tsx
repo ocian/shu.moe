@@ -27,11 +27,12 @@ export default function Post() {
       <Container>
         {page && (
           <>
-            <Typography variant="h1" className={styles.title}>
+            <Typography variant="h3" className={styles.title}>
               {page.title}
             </Typography>
             <Typography>
-              <span dangerouslySetInnerHTML={{ __html: page.html }}></span>
+              <p>{page.summary}</p>
+              <span className={styles.content} dangerouslySetInnerHTML={{ __html: page.html }}></span>
             </Typography>
           </>
         )}
