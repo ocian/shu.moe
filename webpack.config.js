@@ -3,6 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const RemarkHTML = require('remark-html')
 // const RemarkFrontmatter = require('remark-frontmatter')
+const RemarkHightlight = require('remark-highlight.js')
 const CopyPlugin = require('copy-webpack-plugin')
 const path = require('path')
 
@@ -68,7 +69,7 @@ module.exports = {
           {
             loader: 'remark-loader',
             options: {
-              remarkOptions: { plugins: [RemarkHTML] },
+              remarkOptions: { plugins: [RemarkHTML, RemarkHightlight] },
             },
           },
         ],
@@ -117,13 +118,13 @@ module.exports = {
     {},
     mode === 'production'
       ? {
-          minimizer: ['...', new CssMinimizerPlugin()],
-        }
+        minimizer: ['...', new CssMinimizerPlugin()],
+      }
       : {
-          runtimeChunk: true,
-          removeAvailableModules: false,
-          removeEmptyChunks: false,
-          splitChunks: false,
-        }
+        runtimeChunk: true,
+        removeAvailableModules: false,
+        removeEmptyChunks: false,
+        splitChunks: false,
+      }
   ),
 }

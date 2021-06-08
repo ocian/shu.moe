@@ -18,6 +18,7 @@ specifiers:
   cross-env: ^7.0.3
   css-loader: ^5.2.4
   css-minimizer-webpack-plugin: ^3.0.1
+  highlight.js: ^11.0.1
   html-loader: ^2.1.2
   html-webpack-plugin: ^5.3.1
   image-webpack-loader: ^7.0.1
@@ -27,6 +28,7 @@ specifiers:
   react-dom: ^17.0.2
   react-router-dom: ^5.2.0
   remark: ^13.0.0
+  remark-highlight.js: ^6.0.0
   remark-html: ^13.0.1
   remark-loader: ^4.0.0
   sass: ^1.32.13
@@ -45,6 +47,7 @@ dependencies:
   '@material-ui/core': 5.0.0-alpha.35_5d42312ea80c9e9bc2185d1fe094f448
   '@material-ui/icons': 5.0.0-alpha.35_f993d633725adde210721b8d1a61fc88
   clsx: 1.1.1
+  highlight.js: 11.0.1
   raleway-webfont: 3.0.1
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
@@ -66,6 +69,7 @@ devDependencies:
   image-webpack-loader: 7.0.1
   mini-css-extract-plugin: 1.6.0_webpack@5.38.1
   remark: 13.0.0
+  remark-highlight.js: 6.0.0
   remark-html: 13.0.1
   remark-loader: 4.0.0_remark@13.0.0+webpack@5.38.1
   sass: 1.34.0
@@ -2765,6 +2769,12 @@ packages:
       reusify: 1.0.4
     dev: true
 
+  /fault/1.0.4:
+    resolution: {integrity: sha512-CJ0HCB5tL5fYTEA7ToAq5+kTwd++Borf1/bifxd9iT70QcXr4MRrO3Llf8Ifs70q+SJcGHFtnIE/Nw6giCtECA==}
+    dependencies:
+      format: 0.2.2
+    dev: true
+
   /faye-websocket/0.11.4:
     resolution: {integrity: sha512-CzbClwlXAuiRQAlUyfqPgvPoNKTckTPGfwZV4ZdAhVcP2lh9KUxJg2b5GkE7XbjKQ3YJnQ9z6D9ntLAlB+tP8g==}
     engines: {node: '>=0.8.0'}
@@ -2941,6 +2951,11 @@ packages:
   /for-in/1.0.2:
     resolution: {integrity: sha1-gQaNKVqBQuwKxybG4iAMMPttXoA=}
     engines: {node: '>=0.10.0'}
+    dev: true
+
+  /format/0.2.2:
+    resolution: {integrity: sha1-1hcBB+nv3E7TDJ3DkBbflCtctYs=}
+    engines: {node: '>=0.4.x'}
     dev: true
 
   /forwarded/0.1.2:
@@ -3324,6 +3339,15 @@ packages:
   /hex-color-regex/1.1.0:
     resolution: {integrity: sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ==}
     dev: true
+
+  /highlight.js/10.7.3:
+    resolution: {integrity: sha512-tzcUFauisWKNHaRkN4Wjl/ZA07gENAjFl3J/c480dprkGTg5EQstgaNFqBfUqCq54kZRIEcreTsAgF/m2quD7A==}
+    dev: true
+
+  /highlight.js/11.0.1:
+    resolution: {integrity: sha512-EqYpWyTF2s8nMfttfBA2yLKPNoZCO33pLS4MnbXQ4hECf1TKujCt1Kq7QAdrio7roL4+CqsfjqwYj4tYgq0pJQ==}
+    engines: {node: '>=12.0.0'}
+    dev: false
 
   /history/4.10.1:
     resolution: {integrity: sha512-36nwAD620w12kuzPAsyINPWJqlNbij+hpK1k9XRloDtym8mxzGYl2c17LnV6IAGB2Dmg4tEa7G7DlawS0+qjew==}
@@ -4342,6 +4366,13 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
     optional: true
+
+  /lowlight/1.20.0:
+    resolution: {integrity: sha512-8Ktj+prEb1RoCPkEOrPMYUN/nCggB7qAWe3a7OpMjWQkh3l2RD5wKRQ+o8Q8YuI9RG/xs95waaI/E6ym/7NsTw==}
+    dependencies:
+      fault: 1.0.4
+      highlight.js: 10.7.3
+    dev: true
 
   /lpad-align/1.1.2:
     resolution: {integrity: sha1-IfYArBwwlcPG5JfuZyce4ISB/p4=}
@@ -5940,6 +5971,13 @@ packages:
   /relateurl/0.2.7:
     resolution: {integrity: sha1-VNvzd+UUQKypCkzSdGANP/LYiKk=}
     engines: {node: '>= 0.10'}
+    dev: true
+
+  /remark-highlight.js/6.0.0:
+    resolution: {integrity: sha512-eNHP/ezuDKoeh3KV+rWLeBVzU3SYVt0uu1tHdsCB6TUJYHwTNMJWZ5+nU+2fJHQXb+7PtpfGXVtFS9zk/W6qdw==}
+    dependencies:
+      lowlight: 1.20.0
+      unist-util-visit: 2.0.3
     dev: true
 
   /remark-html/13.0.1:
