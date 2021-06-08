@@ -1,6 +1,5 @@
 import loadable, { LoadableComponent } from '@loadable/component'
-import { BrowserRouter, HashRouter, Route, Switch } from 'react-router-dom'
-import LinkList from 'components/link_list'
+import { HashRouter, Route, Switch } from 'react-router-dom'
 
 export interface RouteProps {
   exact?: boolean
@@ -37,7 +36,9 @@ const routes: RouteProps[] = [
   {
     path: '/resume',
     name: '简历',
-    component: loadable(() => import(/* webpackChunkName: "page-resume" */ 'views/resume')),
+    component: loadable(
+      () => import(/* webpackChunkName: "page-resume" */ 'views/resume')
+    ),
     hidden: true,
   },
 ]
