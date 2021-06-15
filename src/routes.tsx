@@ -41,6 +41,13 @@ const routes: RouteProps[] = [
     ),
     hidden: true,
   },
+  {
+    path: '/pixi.js',
+    name: 'PixiJS',
+    component: loadable(
+      () => import(/* webpackChunkName: "page-pixi" */ 'views/pixi')
+    ),
+  },
 ]
 
 const RenderRoute = (props: RouteProps) => (
