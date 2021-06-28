@@ -2,10 +2,11 @@ const HTMLWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const RemarkHTML = require('remark-html')
-// const RemarkFrontmatter = require('remark-frontmatter')
+const RemarkFrontmatter = require('remark-frontmatter')
 const RemarkHightlight = require('remark-highlight.js')
+const RemarkSlug = require('remark-slug')
+const RemarkHeadings = require('remark-autolink-headings')
 const CopyPlugin = require('copy-webpack-plugin')
-const path = require('path')
 
 const mode = process.env.ENV_BUILD_MODE || 'production'
 const sourceMap =
@@ -16,6 +17,7 @@ const cssExportLoader =
 module.exports = {
   mode,
   devtool: sourceMap,
+  stats: 'minimal',
   resolve: {
     modules: ['node_modules', 'src'],
     extensions: ['.tsx', '.jsx', '.ts', '.js', '.css', '.scss'],
@@ -69,7 +71,8 @@ module.exports = {
           {
             loader: 'remark-loader',
             options: {
-              remarkOptions: { plugins: [RemarkHTML, RemarkHightlight] },
+              removeFrontMatter: false,
+              remarkOptions: { plugins: [RemarkHTML, RemarkHightlight, RemarkSlug, RemarkHeadings, RemarkFrontmatter] },
             },
           },
         ],

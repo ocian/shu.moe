@@ -14,9 +14,9 @@ export default function PagePost() {
     const search = getURLSearch(location.search)
     const list = pageList.filter((item) => item.slug === search.slug)
     if (list.length > 0) {
-      list[0].md().then((module: any) => {
+      list[0].md().then((module: any, ...args) => {
         setPage({ ...list[0], html: module.default })
-        console.log(module)
+        console.log(module, args)
       })
     } else {
       setPage(null)

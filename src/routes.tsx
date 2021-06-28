@@ -1,5 +1,5 @@
 import loadable, { LoadableComponent } from '@loadable/component'
-import { HashRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 export interface RouteProps {
   exact?: boolean
@@ -47,6 +47,7 @@ const routes: RouteProps[] = [
     component: loadable(
       () => import(/* webpackChunkName: "page-pixi" */ 'views/pixi')
     ),
+    hidden: true,
   },
 ]
 
@@ -55,13 +56,13 @@ const RenderRoute = (props: RouteProps) => (
 )
 
 const Routes = () => (
-  <HashRouter>
+  <BrowserRouter>
     <Switch>
       {routes.map((route) => (
         <RenderRoute {...route} key={route.path} />
       ))}
     </Switch>
-  </HashRouter>
+  </BrowserRouter>
 )
 
 export default Routes

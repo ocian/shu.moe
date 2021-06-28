@@ -9,10 +9,10 @@ export default function PageHome() {
   }
   return (
     <Container className={styles.page_home}>
-      <Typography>
-        互联网前端开发工程师，专注于 UI 交互、软件工程，对操作系统和各种程序都很感兴趣，期望对这个世界有更多的了解。
+      <Typography className={styles.slogan}>
+        互联网前端开发工程师，会在这个博客站写一点 demo，整理一些心得，写一点 web 程序。欢迎到 <a href="https://github.com/ocian/shu.moe/issues" target="_black">issue</a> 留言。
       </Typography>
-      <div style={{ textAlign: 'center', marginTop: '30px' }}>
+      <div className={styles.layout_btn}>
         <Button variant="outlined" onClick={() => linkTo('/blogs')}>
           Blogs
         </Button>

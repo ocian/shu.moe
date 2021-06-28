@@ -29,9 +29,12 @@ specifiers:
   react-dom: ^17.0.2
   react-router-dom: ^5.2.0
   remark: ^13.0.0
+  remark-autolink-headings: ^6.0.1
+  remark-frontmatter: ^3.0.0
   remark-highlight.js: ^6.0.0
   remark-html: ^13.0.1
   remark-loader: ^4.0.0
+  remark-slug: ^6.0.0
   sass: ^1.32.13
   sass-loader: ^11.1.1
   style-loader: ^2.0.0
@@ -71,9 +74,12 @@ devDependencies:
   image-webpack-loader: 7.0.1
   mini-css-extract-plugin: 1.6.0_webpack@5.38.1
   remark: 13.0.0
+  remark-autolink-headings: 6.0.1
+  remark-frontmatter: 3.0.0
   remark-highlight.js: 6.0.0
   remark-html: 13.0.1
   remark-loader: 4.0.0_remark@13.0.0+webpack@5.38.1
+  remark-slug: 6.0.0
   sass: 1.34.0
   sass-loader: 11.1.1_sass@1.34.0+webpack@5.38.1
   style-loader: 2.0.0_webpack@5.38.1
@@ -2686,6 +2692,10 @@ packages:
     resolution: {integrity: sha512-4i3T0cwnHo1O4Mnp9JniEco8bZiXoqbm3PhW5hv7uu8YLg35iajYrRnNyKFaN8/8SSTskU2hYqVTeYVPceSpUA==}
     dev: true
 
+  /emoji-regex/6.1.1:
+    resolution: {integrity: sha1-xs0OwbBkLio8Z6ETfvxeeW2k+I4=}
+    dev: true
+
   /emoji-regex/7.0.3:
     resolution: {integrity: sha512-CwBLREIQ7LvYFB0WyRvwhq5N5qPhc6PMjD6bYggFlI5YyDgl+0vxq5VHbMOFqLg7hfWzmu8T5Z1QofhmTIhItA==}
     dev: true
@@ -3414,6 +3424,12 @@ packages:
       logalot: 2.1.0
     dev: true
     optional: true
+
+  /github-slugger/1.3.0:
+    resolution: {integrity: sha512-gwJScWVNhFYSRDvURk/8yhcFBee6aFjye2a7Lhb2bUyRulpIoek9p0I9Kt7PT67d/nUlZbFu8L9RLiA0woQN8Q==}
+    dependencies:
+      emoji-regex: 6.1.1
+    dev: true
 
   /glob-parent/3.1.0:
     resolution: {integrity: sha1-nmr2KZ2NO9K9QEMIMr0RPfkGxa4=}
@@ -4771,6 +4787,12 @@ packages:
       - supports-color
     dev: true
 
+  /mdast-util-frontmatter/0.2.0:
+    resolution: {integrity: sha512-FHKL4w4S5fdt1KjJCwB0178WJ0evnyyQr5kXTM3wrOVpytD0hrkvd+AOOjU9Td8onOejCkmZ+HQRT3CZ3coHHQ==}
+    dependencies:
+      micromark-extension-frontmatter: 0.2.2
+    dev: true
+
   /mdast-util-to-hast/10.2.0:
     resolution: {integrity: sha512-JoPBfJ3gBnHZ18icCwHR50orC9kNH81tiR1gs01D8Q5YpV6adHNO9nKNuFBCJQ941/32PT1a63UF/DitmS3amQ==}
     dependencies:
@@ -4793,6 +4815,10 @@ packages:
       parse-entities: 2.0.0
       repeat-string: 1.6.1
       zwitch: 1.0.5
+    dev: true
+
+  /mdast-util-to-string/1.1.0:
+    resolution: {integrity: sha512-jVU0Nr2B9X3MU4tSK7JP1CMkSvOj7X5l/GboG1tKRw52lLF1x2Ju92Ms9tNetCcbfX3hzlM73zYo2NKkWSfF/A==}
     dev: true
 
   /mdast-util-to-string/2.0.0:
@@ -4857,6 +4883,12 @@ packages:
   /methods/1.1.2:
     resolution: {integrity: sha1-VSmk1nZUE07cxSZmVoNbD4Ua/O4=}
     engines: {node: '>= 0.6'}
+    dev: true
+
+  /micromark-extension-frontmatter/0.2.2:
+    resolution: {integrity: sha512-q6nPLFCMTLtfsctAuS0Xh4vaolxSFUWUWR6PZSrXXiRy+SANGllpcqdXFv2z07l0Xz/6Hl40hK0ffNCJPH2n1A==}
+    dependencies:
+      fault: 1.0.4
     dev: true
 
   /micromark/2.11.4:
@@ -6343,6 +6375,20 @@ packages:
     engines: {node: '>= 0.10'}
     dev: true
 
+  /remark-autolink-headings/6.0.1:
+    resolution: {integrity: sha512-LTV5G5NMjypHEr14tMNJ36yrP+xwT7mejJelZOPXKiF5WvRH9o36zXnr2QGqfms2yVASNpDaC9NBOwKlJJKuQw==}
+    dependencies:
+      extend: 3.0.2
+      unist-util-visit: 2.0.3
+    dev: true
+
+  /remark-frontmatter/3.0.0:
+    resolution: {integrity: sha512-mSuDd3svCHs+2PyO29h7iijIZx4plX0fheacJcAoYAASfgzgVIcXGYSq9GFyYocFLftQs8IOmmkgtOovs6d4oA==}
+    dependencies:
+      mdast-util-frontmatter: 0.2.0
+      micromark-extension-frontmatter: 0.2.2
+    dev: true
+
   /remark-highlight.js/6.0.0:
     resolution: {integrity: sha512-eNHP/ezuDKoeh3KV+rWLeBVzU3SYVt0uu1tHdsCB6TUJYHwTNMJWZ5+nU+2fJHQXb+7PtpfGXVtFS9zk/W6qdw==}
     dependencies:
@@ -6377,6 +6423,14 @@ packages:
       mdast-util-from-markdown: 0.8.5
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /remark-slug/6.0.0:
+    resolution: {integrity: sha512-ln67v5BrGKHpETnm6z6adlJPhESFJwfuZZ3jrmi+lKTzeZxh2tzFzUfDD4Pm2hRGOarHLuGToO86MNMZ/hA67Q==}
+    dependencies:
+      github-slugger: 1.3.0
+      mdast-util-to-string: 1.1.0
+      unist-util-visit: 2.0.3
     dev: true
 
   /remark-stringify/9.0.1:
