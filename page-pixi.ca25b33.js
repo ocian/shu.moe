@@ -1,0 +1,2 @@
+(self.webpackChunkshu_moe=self.webpackChunkshu_moe||[]).push([[619],{5830:(e,r,u)=>{"use strict";u.r(r),u.d(r,{default:()=>i});var n=u(4637),t=u(8017),c=u(9496);function i(){var e=(0,c.useRef)();return(0,c.useEffect)((function(){var r=new t.MxU;return e.current&&e.current.appendChild(r.view),function(){e.current&&e.current.removeChild(r.view),r.destroy()}}),[]),(0,n.jsx)("div",{ref:e,children:"pixi"})}}}]);
+//# sourceMappingURL=page-pixi.ca25b33.js.map
