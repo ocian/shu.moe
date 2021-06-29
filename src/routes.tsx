@@ -1,5 +1,5 @@
 import loadable, { LoadableComponent } from '@loadable/component'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { HashRouter, Route, Switch } from 'react-router-dom'
 
 export interface RouteProps {
   exact?: boolean
@@ -57,13 +57,13 @@ const RenderRoute = (props: RouteProps) => (
 )
 
 const Routes = () => (
-  <BrowserRouter>
+  <HashRouter>
     <Switch>
       {routes.map((route) => (
         <RenderRoute {...route} key={route.path} />
       ))}
     </Switch>
-  </BrowserRouter>
+  </HashRouter>
 )
 
 export default Routes
