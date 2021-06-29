@@ -9,6 +9,22 @@ pre {
   padding: 10px;
   font-family: "Fira Code", "Noto Serif SC", Arial;
 }
+
+blockquote{
+  position: relative;
+  &:before {
+    content: '';
+    display: block;
+    width: 4px;
+    background-color: #aaa;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: -18px;
+  }
+}
+
+
 .cursor {
   cursor: pointer;
 }

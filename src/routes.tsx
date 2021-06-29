@@ -24,6 +24,7 @@ const routes: RouteProps[] = [
       () => import(/* webpackChunkName: "page-blog" */ 'views/blog_list')
     ),
     name: '博客',
+    hidden: true,
   },
   {
     path: '/post',

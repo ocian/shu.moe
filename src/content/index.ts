@@ -13,6 +13,15 @@ const pageList = [
       '作为一个成熟的 JavaScript 工具人，应该学会面对超出预期的现象，理解产生麻烦的原因，整理合理不合情的情况，在反馈和反思中修改完善。',
     md: () => import(/* webpackChunkName: "md.happy-js" */ './happy-js.md'),
   },
+  {
+    slug: 'front-end-performance-topic',
+    title: '前端性能专题',
+    summary: '',
+    md: () =>
+      import(
+        /* webpackChunkName: "md.front-end-performance-topic" */ './front-end-performance-topic.md'
+      ),
+  },
 ]
 
 export type PageList = typeof pageList
