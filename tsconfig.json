@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "jsx": "react-jsx",
+    "target": "ESNext"
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs",
+      "target": "es5",
+      "esModuleInterop": true
+    }
+  },
+  "include": [
+    "./src/",
+  ],
+  "exclude": [
+    "webpack.config.ts"
+  ]
+}
