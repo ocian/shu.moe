@@ -2,7 +2,12 @@
   "compilerOptions": {
     "sourceMap": true,
     "jsx": "react-jsx",
-    "target": "ESNext"
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "lib": ["ESNext.Intl", "ES2017.Intl", "ES2018.Intl", "DOM"],
+    "allowSyntheticDefaultImports": true
   },
   "ts-node": {
     "compilerOptions": {
@@ -11,10 +16,6 @@
       "esModuleInterop": true
     }
   },
-  "include": [
-    "./src/",
-  ],
-  "exclude": [
-    "webpack.config.ts"
-  ]
+  "include": ["./src/"],
+  "exclude": ["webpack.config.ts"]
 }
