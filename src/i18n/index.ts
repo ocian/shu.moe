@@ -16,3 +16,4 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
 })
 
 export default i18n
+export const locales = Object.keys(resources).map(name => ({ name }))

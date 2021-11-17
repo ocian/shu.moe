@@ -1,5 +1,4 @@
 {
-  "title": "Shu's website",
-  "welcome": "Welcome to React and react-i18next",
-  "locale-placeholder": "Languages"
+  "locale-placeholder": "Languages",
+  "waht-happened": "How are you, what happened to you?"
 }
