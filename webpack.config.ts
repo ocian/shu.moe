@@ -7,6 +7,8 @@ import CssMinimizerPlugin from 'css-minimizer-webpack-plugin'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import FaviconsWebpackPlugin from 'favicons-webpack-plugin'
 
+import config from './config'
+
 const pathFile = {
   dist: path.resolve(__dirname, 'dist'),
   html: path.resolve(__dirname, 'src/assets/template/index.html'),
@@ -35,6 +37,11 @@ function compiler(): webpack.Configuration {
           filename: '[name].[contenthash:7].css',
           chunkFilename: '[id].[contenthash:7].css',
         }),
+        new FaviconsWebpackPlugin({
+          logo: pathFile.favicon,
+          cache: true,
+          favicons: config.favicons,
+        }),
         new BundleAnalyzerPlugin({ analyzerMode: "static" })
       ]
 
@@ -59,7 +66,6 @@ function compiler(): webpack.Configuration {
     plugins: [
       new ForkTsCheckerWebpackPlugin(),
       new HtmlWebpackPlugin({ template: pathFile.html, }),
-      new FaviconsWebpackPlugin(pathFile.favicon),
       ...plugins,
     ],
     devServer: { hot: true },
