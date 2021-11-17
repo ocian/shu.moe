@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import styles from '../styles/page.module.scss'
 import * as C from '../components'
 
-export function Home() {
+export default function Page() {
   const { t } = useTranslation()
 
   return (
@@ -12,7 +12,7 @@ export function Home() {
         <span />
         <C.I18n />
       </Flex>
-      <Well margin="size-1000">{t`waht-happened`}</Well>
+      <Well margin="size-200">{t`waht-happened`}</Well>
     </div>
   )
 }
