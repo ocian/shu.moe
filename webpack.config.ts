@@ -5,10 +5,12 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
+import FaviconsWebpackPlugin from 'favicons-webpack-plugin'
 
-const pathOutput = {
+const pathFile = {
   dist: path.resolve(__dirname, 'dist'),
-  html: path.resolve(__dirname, 'src/assets/template/index.html')
+  html: path.resolve(__dirname, 'src/assets/template/index.html'),
+  favicon: path.resolve(__dirname, 'src/assets/images/favicon.jpeg'),
 }
 
 function compiler(): webpack.Configuration {
@@ -38,7 +40,7 @@ function compiler(): webpack.Configuration {
 
   return {
     entry: './src/index.tsx',
-    output: { path: pathOutput.dist, filename, clean: true, },
+    output: { path: pathFile.dist, filename, clean: true, },
     module: {
       rules: [
         {
@@ -56,7 +58,8 @@ function compiler(): webpack.Configuration {
     },
     plugins: [
       new ForkTsCheckerWebpackPlugin(),
-      new HtmlWebpackPlugin({ template: pathOutput.html, }),
+      new HtmlWebpackPlugin({ template: pathFile.html, }),
+      new FaviconsWebpackPlugin(pathFile.favicon),
       ...plugins,
     ],
     devServer: { hot: true },
