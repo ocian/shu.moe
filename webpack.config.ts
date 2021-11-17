@@ -41,9 +41,17 @@ function compiler(): webpack.Configuration {
     output: { path: pathOutput.dist, filename, clean: true, },
     module: {
       rules: [
-        { test: /\.tsx?$/, use: [{ loader: 'ts-loader', options: { transpileOnly: true } }], },
+        {
+          test: /\.tsx?$/,
+          use: [{ loader: 'ts-loader', options: { transpileOnly: true } }],
+        },
         { test: /\.css$/, use: [styleLoader, 'css-loader'], },
-        { test: /\.s(a|c)ss$/, use: [styleLoader, 'css-loader', 'sass-loader'] }
+        { test: /\.s(a|c)ss$/, use: [styleLoader, 'css-loader', 'sass-loader'] },
+        {
+          test: /\.(gif|png|jpe?g|svg)$/i,
+          type: 'asset/resource',
+          use: ['image-webpack-loader']
+        }
       ],
     },
     plugins: [
