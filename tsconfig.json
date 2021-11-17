@@ -7,7 +7,8 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "lib": ["ESNext.Intl", "ES2017.Intl", "ES2018.Intl", "DOM"],
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
   "ts-node": {
     "compilerOptions": {

@@ -1,4 +1,5 @@
 {
   "title": "小树的网站",
-  "welcome": "还不错 react-i18next"
+  "welcome": "还不错 react-i18next",
+  "locale-placeholder": "语言"
 }
